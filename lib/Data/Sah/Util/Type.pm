@@ -28,6 +28,8 @@ my $type_metas = {
     re    => {scalar=>1, numeric=>0, ref=>1, simple=>1},
     str   => {scalar=>1, numeric=>0, ref=>0},
     undef => {scalar=>1, numeric=>0, ref=>0},
+    date     => {scalar=>1, numeric=>0, ref=>0},
+    duration => {scalar=>1, numeric=>0, ref=>0},
 };
 
 sub get_type {
