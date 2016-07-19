@@ -76,7 +76,7 @@ sub is_type {
 
     my $type = get_type($sch) or return undef;
     my $tmeta = $type_metas->{$type} or return undef;
-    1;
+    $type;
 }
 
 sub is_simple {
@@ -174,7 +174,7 @@ Return type name.
 
 =head2 is_type($sch) => STR
 
-Return true if type in schema is known.
+Return type name if type in schema is known, or undef.
 
 =head2 is_simple($sch[, \%opts]) => BOOL
 
