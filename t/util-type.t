@@ -4,8 +4,14 @@ use 5.010;
 use strict;
 use warnings;
 
-use Data::Sah::Util::Type qw(is_simple is_collection is_numeric is_ref);
+use Data::Sah::Util::Type qw(is_type is_simple is_collection is_numeric is_ref);
 use Test::More 0.98;
+
+subtest is_type => sub {
+    ok( is_type("int"));
+    ok( is_type("int*"));
+    ok(!is_type("foo"));
+};
 
 subtest is_simple => sub {
     ok(!is_simple("all"), "all without of");

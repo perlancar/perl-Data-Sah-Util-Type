@@ -9,7 +9,7 @@ use warnings;
 
 require Exporter;
 our @ISA       = qw(Exporter);
-our @EXPORT_OK = qw(get_type is_simple is_numeric is_collection is_ref);
+our @EXPORT_OK = qw(get_type is_type is_simple is_numeric is_collection is_ref);
 
 # XXX absorb and use metadata from Data::Sah::Type::*
 my $type_metas = {
@@ -70,6 +70,15 @@ sub _handle_any_all {
     1;
 }
 
+sub is_type {
+    my ($sch, $opts) = @_;
+    $opts //= {};
+
+    my $type = get_type($sch) or return undef;
+    my $tmeta = $type_metas->{$type} or return undef;
+    1;
+}
+
 sub is_simple {
     my ($sch, $opts) = @_;
     $opts //= {};
@@ -125,12 +134,16 @@ sub is_ref {
 
  use Data::Sah::Util::Type qw(
      get_type
+     is_type
      is_simple is_numeric is_collection is_ref
  );
 
  say get_type("int");                          # -> int
  say get_type("int*");                         # -> int
  say get_type([int => min=>0]);                # -> int
+
+ say is_type("int*");                          # -> 1
+ say is_type("foo");                           # -> 0
 
  say is_simple("int");                          # -> 1
  say is_simple("array");                        # -> 0
@@ -156,6 +169,12 @@ utilities and is distributed with Data-Sah.
 None exported by default, but they are exportable.
 
 =head2 get_type($sch) => STR
+
+Return type name.
+
+=head2 is_type($sch) => STR
+
+Return true if type in schema is known.
 
 =head2 is_simple($sch[, \%opts]) => BOOL
 
