@@ -1,5 +1,10 @@
 Revision history for Data-Sah-Util-Type
 
+0.44    2016-07-19 (PERLANCAR)
+
+	- Add is_type().
+
+
 0.43    2015-12-17 (PERLANCAR)
 
 	- Add date & duration (currently defined as scalar/not numeric/not
