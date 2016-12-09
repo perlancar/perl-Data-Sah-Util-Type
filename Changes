@@ -1,5 +1,13 @@
 Revision history for Data-Sah-Util-Type
 
+0.46    2016-12-09 (PERLANCAR)
+
+	- No functional changes.
+
+	- [doc] Give more examples, explanation, as well as reference table
+	  for get_type/is_type/is_simple/is_collection/is_ref/is_numeric.
+
+
 0.45    2016-07-19 (PERLANCAR)
 
 	- API change: is_type() returns type name instead of just true/1.
